@@ -1,0 +1,7 @@
+name: IOC
+author: kentaromiura
+category: Native
+tags: [ioc, decoupling, dependency, injection]
+docs: http://mykenta.blogspot.it/search/label/IoC
+#demo: todo
+current: 1.0.0
