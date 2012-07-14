@@ -1,60 +1,61 @@
 /*
- ---
- name: kenta.IOC.Unit
- description: Ninject style configurator for IOC
- authors: Cristian Carlesso http://mykenta.blogspot.com
- copyright: Cristian Carlesso
- license: MIT-style license.
- requires: [IOC]
- provides: [injection]
- ...
- */
+---
+name: kenta.IOC.Unit
+description: Ninject style configurator for IOC
+authors: Cristian Carlesso http://mykenta.blogspot.com
+copyright: Cristian Carlesso
+license: MIT-style license.
+version: 1.0.0
+requires: [IOC]
+provides: [IOC.Unit]
+...
+*/
 
 !function(global){
 	var IOC = global.IOC,
-	Configuration = new Class({
-		bindings: [],
-		initialize: function(){
-			this.bindings = [];
-		},
-		Bind: function(base, to){
-			var self = this;
-			var tmp = {
-				To : function(to){
-					self.bindings.push({base: base, bind: new to});
+		Configuration = new Class({
+			bindings:   [],
+			initialize: function(){
+				this.bindings = []
+			},
+			Bind:       function(base, to){
+				var self = this
+				var tmp = {
+					To: function(to){
+						self.bindings.push({base: base, bind: new to})
+					}
+				}
+
+				if (to) {
+					tmp.To(to)
+				} else {
+					return tmp
 				}
 			}
-
-			if(to){
-				tmp.To(to);
-			}else{
-				return tmp;
-			}
-		}
-	});
+		})
 
 	IOC.Unit = new Class({
-		initialize:function(){
-			this.configuration = new Configuration();
+		initialize: function(){
+			this.configuration = new Configuration()
 		},
-		Bind: function(a, b){
-			return this.configuration.Bind(a, b);
+		Bind:       function(a, b){
+			return this.configuration.Bind(a, b)
 		},
-		Get: function(klass){
-			var container = new IOC();
-			container.register('x', klass);
-			var setter = {};
-			var proto = klass.prototype;
-			var binding = this.configuration.bindings;
-			for(var prop in proto){
-				for(var i= 0, max= binding.length;i<max;i++){
-					if(binding[i].base == proto[prop]){
-						setter[prop] = binding[i].bind;
+		Get:        function(klass){
+			var container = new IOC()
+			container.register('x', klass)
+			var setter = {}
+			var proto = klass.prototype
+			var binding = this.configuration.bindings
+			for (var prop in proto) {
+				for (var i = 0, max = binding.length; i < max; i++) {
+					if (binding[i].base == proto[prop]) {
+						setter[prop] = binding[i].bind
 					}
 				}
 			}
-			return container.bySetter('x', setter);
+			return container.bySetter('x', setter)
 		}
-	});
+	})
 
 }(this)
