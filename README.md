@@ -12,7 +12,7 @@ To directly use the IOC container with manual injection:
 ```js
 // Construction injection example
 
-import {IOC} from 'IOC';
+import {IOC} from 'kenta-ioc';
 import Samurai from './Samurai';
 import Shuriken from './Shuriken';
 import Sword from './Sword';
@@ -30,7 +30,7 @@ warrior2.attack("The evildoers") // Chopped The evildoers in half
 
 ```js
 // Setter injection example
-import {IOC} from 'IOC';
+import {IOC} from 'kenta-ioc';
 import Samurai from './Samurai';
 import Shuriken from './Shuriken';
 import Sword from './Sword';
@@ -48,7 +48,7 @@ warrior2.attack("The evildoers") // Chopped The evildoers in half
 Alternatively it's possible to get a Ninject style configuration using Unit:
 
 ```js
-import {Unit} from 'IOC';
+import {Unit} from 'kenta-ioc';
 
 import Shuriken from './Shuriken';
 import Sword from './Sword';

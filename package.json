@@ -1,13 +1,21 @@
 {
-  "name": "IOC",
-  "version": "3.0.0",
+  "name": "kenta-ioc",
+  "version": "3.0.1",
   "description": "Inversion of control for JS",
   "main": "Source/index.js",
   "repository": "https://github.com/kentaromiura/IOC.git",
   "author": "Cristian Carlesso <kentaromiura@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-preset-react-app": "^3.1.0",
     "jest-cli": "^21.2.1"
-  }
+  },
+  "scripts": {
+    "prepublish": "yarn compile",
+    "compile": "NODE_ENV=production ./node_modules/.bin/babel --presets react-app -d dist/ Source/"
+  },
+  "files": [
+    "./dist/"
+  ]
 }
