@@ -2,7 +2,7 @@
   "name": "IOC",
   "version": "3.0.0",
   "description": "Inversion of control for JS",
-  "main": "index.js",
+  "main": "Source/index.js",
   "repository": "https://github.com/kentaromiura/IOC.git",
   "author": "Cristian Carlesso <kentaromiura@gmail.com>",
   "license": "MIT",
