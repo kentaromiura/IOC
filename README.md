@@ -53,7 +53,9 @@ import {Unit} from 'IOC';
 import Shuriken from './Shuriken';
 import Sword from './Sword';
 
-class IWeapon {}
+// This is the contract.
+class IWeapon { attack(who){ throw 'not implemented'; } }
+
 class Shuriken extends IWeapon {
     attack(who) { return `Pierced ${who} armor`; }
 }
@@ -65,6 +67,7 @@ const unit1 = new Unit();
 const unit2 = new Unit();
 
 class Samurai {
+    // This is where the class defines its contract.
     static weapon = IWeapon;
 
     attack(who) {
@@ -72,9 +75,9 @@ class Samurai {
     }
 }
 
-// in unit 1 we will link configure IWeapon to be Sword instances	
+// In unit 1 we will link configure IWeapon to be Sword instance...
 unit1.bind(IWeapon).to(Sword);
-// while in unit 2 those will be Shuriken
+// ...while in unit 2 those will be Shuriken.
 unit2.bind(IWeapon).to(Shuriken);
 
 unit1.get(Samurai).attack('The evildoers'); // Chopped The evildoers in half
