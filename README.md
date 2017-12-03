@@ -77,7 +77,7 @@ class Samurai {
 
 // In unit 1 we will configure IWeapon to be Sword instance...
 unit1.bind(IWeapon).to(Sword);
-// ...while in unit 2 those will be Shuriken.
+// ...while in unit 2 it will be Shuriken.
 unit2.bind(IWeapon).to(Shuriken);
 
 unit1.get(Samurai).attack('The evildoers'); // Chopped The evildoers in half
